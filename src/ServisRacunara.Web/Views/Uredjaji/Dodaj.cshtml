@@ -1,4 +1,4 @@
-﻿@model ServisRacunara.DAL.Entiteti.Uredjaj
+﻿@model ServisRacunara.Web.ViewModels.UredjajViewModel
 
 <h2>Dodavanje uređaja</h2>
 
@@ -17,9 +17,8 @@
     <div class="mb-3">
         <label>Klijent</label>
 
-        <select asp-for="KlijentId"
-                asp-items="ViewBag.Klijenti"
-                class="form-control">
+        <select asp-for="KlijentId" asp-items="ViewBag.Klijenti" class="form-control">
+            <option value="">-- Izaberi klijenta --</option>
         </select>
     </div>
 

@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ServisRacunara.BLL.Servisi;
-using ServisRacunara.DAL.Entiteti;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using ServisRacunara.BLL.Servisi;
 using ServisRacunara.DAL.Kontekst;
+using ServisRacunara.DAL.Entiteti;
+using ServisRacunara.Web.ViewModels;
 
 namespace ServisRacunara.Web.Controllers
 {
     public class UredjajiController : Controller
     {
         private readonly UredjajServis _uredjajServis;
-
         private readonly BazaKontekst _kontekst;
 
         public UredjajiController(
@@ -34,12 +34,19 @@ namespace ServisRacunara.Web.Controllers
                 "Id",
                 "Ime");
 
-            return View();
+            return View(new UredjajViewModel());
         }
 
         [HttpPost]
-        public IActionResult Dodaj(Uredjaj uredjaj)
+        public IActionResult Dodaj([FromForm] UredjajViewModel NoviModel)
         {
+            var uredjaj = new Uredjaj
+            {
+                Naziv = NoviModel.Naziv,
+                Model = NoviModel.Model,
+                KlijentId = NoviModel.KlijentId
+            };
+
             _uredjajServis.DodajUredjaj(uredjaj);
 
             return RedirectToAction("Index");
@@ -52,12 +59,33 @@ namespace ServisRacunara.Web.Controllers
             if (uredjaj == null)
                 return NotFound();
 
-            return View(uredjaj);
+            ViewBag.Klijenti = new SelectList(
+                _kontekst.Klijenti,
+                "Id",
+                "Ime");
+
+            var model = new UredjajViewModel
+            {
+                Id = uredjaj.Id,
+                Naziv = uredjaj.Naziv,
+                Model = uredjaj.Model,
+                KlijentId = uredjaj.KlijentId
+            };
+
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult Izmeni(Uredjaj uredjaj)
+        public IActionResult Izmeni(UredjajViewModel IzmenjenModel)
         {
+            var uredjaj = new Uredjaj
+            {
+                Id = IzmenjenModel.Id,
+                Naziv = IzmenjenModel.Naziv,
+                Model = IzmenjenModel.Model,
+                KlijentId = IzmenjenModel.KlijentId
+            };
+
             _uredjajServis.IzmeniUredjaj(uredjaj);
 
             return RedirectToAction("Index");

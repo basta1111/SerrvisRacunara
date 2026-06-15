@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using ServisRacunara.BLL.Servisi;
 using ServisRacunara.DAL.Kontekst;
 using ServisRacunara.DAL.Entiteti;
+using ServisRacunara.Web.ViewModels;
 
 namespace ServisRacunara.Web.Controllers
 {
@@ -38,13 +39,21 @@ namespace ServisRacunara.Web.Controllers
                 "Id",
                 "Ime");
 
-            return View();
+            return View(new ServisniNalogViewModel());
         }
 
         [HttpPost]
-        public IActionResult Dodaj(ServisniNalog nalog)
+        public IActionResult Dodaj(ServisniNalogViewModel model)
         {
-            nalog.DatumPrijema = DateTime.Now;
+            var nalog = new ServisniNalog
+            {
+                OpisKvara = model.OpisKvara,
+                Status = model.Status,
+                Cena = model.Cena,
+                UredjajId = model.UredjajId,
+                ServiserId = model.ServiserId,
+                DatumPrijema = DateTime.Now
+            };
 
             _nalogServis.DodajNalog(nalog);
 
@@ -68,12 +77,32 @@ namespace ServisRacunara.Web.Controllers
                 "Id",
                 "Ime");
 
-            return View(nalog);
+            var model = new ServisniNalogViewModel
+            {
+                Id = nalog.Id,
+                OpisKvara = nalog.OpisKvara,
+                Status = nalog.Status,
+                Cena = nalog.Cena,
+                UredjajId = nalog.UredjajId,
+                ServiserId = nalog.ServiserId
+            };
+
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult Izmeni(ServisniNalog nalog)
+        public IActionResult Izmeni(ServisniNalogViewModel model)
         {
+            var nalog = new ServisniNalog
+            {
+                Id = model.Id,
+                OpisKvara = model.OpisKvara,
+                Status = model.Status,
+                Cena = model.Cena,
+                UredjajId = model.UredjajId,
+                ServiserId = model.ServiserId
+            };
+
             _nalogServis.IzmeniNalog(nalog);
 
             return RedirectToAction("Index");

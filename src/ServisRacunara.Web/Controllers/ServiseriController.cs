@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ServisRacunara.BLL.Servisi;
 using ServisRacunara.DAL.Entiteti;
+using ServisRacunara.Web.ViewModels;
 
 namespace ServisRacunara.Web.Controllers
 {
@@ -26,8 +27,15 @@ namespace ServisRacunara.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Dodaj(Serviser serviser)
+        public IActionResult Dodaj(ServiserViewModel model)
         {
+            var serviser = new Serviser
+            {
+                Ime = model.Ime,
+                Prezime = model.Prezime,
+                Specijalizacija = model.Specijalizacija
+            };
+
             _serviserServis.DodajServisera(serviser);
 
             return RedirectToAction("Index");
@@ -40,12 +48,28 @@ namespace ServisRacunara.Web.Controllers
             if (serviser == null)
                 return NotFound();
 
-            return View(serviser);
+            var model = new ServiserViewModel
+            {
+                Id = serviser.Id,
+                Ime = serviser.Ime,
+                Prezime = serviser.Prezime,
+                Specijalizacija = serviser.Specijalizacija
+            };
+
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult Izmeni(Serviser serviser)
+        public IActionResult Izmeni(ServiserViewModel model)
         {
+            var serviser = new Serviser
+            {
+                Id = model.Id,
+                Ime = model.Ime,
+                Prezime = model.Prezime,
+                Specijalizacija = model.Specijalizacija
+            };
+
             _serviserServis.IzmeniServisera(serviser);
 
             return RedirectToAction("Index");
