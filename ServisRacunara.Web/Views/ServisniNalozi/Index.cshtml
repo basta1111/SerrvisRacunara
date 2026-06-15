@@ -1,0 +1,52 @@
+﻿@model List<ServisRacunara.DAL.Entiteti.ServisniNalog>
+
+<a asp-action="Dodaj" class="btn btn-success mb-3">
+    Novi servisni nalog
+</a>
+
+<h2>Servisni nalozi</h2>
+
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th>Opis kvara</th>
+            <th>Status</th>
+            <th>Cena</th>
+            <th>Uređaj</th>
+            <th>Serviser</th>
+            <th>Akcije</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var nalog in Model)
+        {
+            <tr>
+                <td>@nalog.OpisKvara</td>
+                <td>@nalog.Status</td>
+                <td>@nalog.Cena</td>
+                <td>@nalog.Uredjaj.Model</td>
+                <td>@nalog.Serviser.Ime</td>
+
+                <td>
+                    <a asp-action="Izmeni"
+                       asp-route-id="@nalog.Id"
+                       class="btn btn-warning btn-sm">
+                        Izmeni
+                    </a>
+
+                    <a asp-action="Obrisi"
+                       asp-route-id="@nalog.Id"
+                       class="btn btn-danger btn-sm"
+                       onclick="return confirm('Da li ste sigurni da želite da obrišete nalog?')">
+                        Obriši
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>

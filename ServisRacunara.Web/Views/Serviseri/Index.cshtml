@@ -1,0 +1,43 @@
+﻿@model List<ServisRacunara.DAL.Entiteti.Serviser>
+
+<a asp-action="Dodaj" class="btn btn-success mb-3">
+    Dodaj servisera
+</a>
+
+<h2>Lista servisera</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>Specijalizacija</th>
+            <th>Akcije</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var serviser in Model)
+        {
+            <tr>
+                <td>@serviser.Ime</td>
+                <td>@serviser.Prezime</td>
+                <td>@serviser.Specijalizacija</td>
+
+                <td>
+                    <a asp-action="Izmeni"
+                       asp-route-id="@serviser.Id"
+                       class="btn btn-warning btn-sm">
+                        Izmeni
+                    </a>
+
+                    <a asp-action="Obrisi"
+                       asp-route-id="@serviser.Id"
+                       class="btn btn-danger btn-sm">
+                        Obriši
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

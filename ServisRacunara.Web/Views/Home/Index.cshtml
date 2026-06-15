@@ -1,0 +1,53 @@
+﻿@model ServisRacunara.Web.Models.DashboardModel
+
+<div class="text-center mb-5">
+
+    <h1 class="display-4">
+        Sistem za upravljanje servisom računara
+    </h1>
+
+    <p class="lead">
+        Evidencija klijenata, uređaja, servisera i servisnih naloga
+    </p>
+
+</div>
+
+<div class="row">
+
+    <div class="col-md-3 mb-3">
+        <div class="card shadow">
+            <div class="card-body text-center">
+                <h3>@Model.BrojKlijenata</h3>
+                <p>Klijenti</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card shadow">
+            <div class="card-body text-center">
+                <h3>@Model.BrojUredjaja</h3>
+                <p>Uređaji</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card shadow">
+            <div class="card-body text-center">
+                <h3>@Model.BrojServisera</h3>
+                <p>Serviseri</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card shadow">
+            <div class="card-body text-center">
+                <h3>@Model.BrojNaloga</h3>
+                <p>Servisni nalozi</p>
+            </div>
+        </div>
+    </div>
+
+</div>

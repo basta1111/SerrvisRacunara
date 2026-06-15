@@ -1,0 +1,28 @@
+﻿@model ServisRacunara.DAL.Entiteti.Uredjaj
+
+<h2>Izmena uređaja</h2>
+
+<form method="post">
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label>Naziv</label>
+        <input asp-for="Naziv" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Model</label>
+        <input asp-for="Model" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Klijent ID</label>
+        <input asp-for="KlijentId" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Sačuvaj izmene
+    </button>
+
+</form>

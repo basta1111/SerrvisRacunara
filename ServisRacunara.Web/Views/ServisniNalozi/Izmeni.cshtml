@@ -1,0 +1,51 @@
+﻿@model ServisRacunara.DAL.Entiteti.ServisniNalog
+
+<h2>Izmena servisnog naloga</h2>
+
+<form method="post">
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label>Opis kvara</label>
+        <input asp-for="OpisKvara" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Status</label>
+
+        <select asp-for="Status" class="form-control">
+            <option>Primljen</option>
+            <option>U radu</option>
+            <option>Završen</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Cena</label>
+        <input asp-for="Cena" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Uređaj</label>
+
+        <select asp-for="UredjajId"
+                asp-items="ViewBag.Uredjaji"
+                class="form-control">
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Serviser</label>
+
+        <select asp-for="ServiserId"
+                asp-items="ViewBag.Serviseri"
+                class="form-control">
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Sačuvaj izmene
+    </button>
+
+</form>

@@ -1,0 +1,26 @@
+﻿@model ServisRacunara.DAL.Entiteti.Serviser
+
+<h2>Dodavanje servisera</h2>
+
+<form method="post">
+
+    <div class="mb-3">
+        <label>Ime</label>
+        <input asp-for="Ime" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Prezime</label>
+        <input asp-for="Prezime" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Specijalizacija</label>
+        <input asp-for="Specijalizacija" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Sačuvaj
+    </button>
+
+</form>

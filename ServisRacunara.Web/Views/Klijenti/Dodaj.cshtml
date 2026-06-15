@@ -1,0 +1,31 @@
+﻿@model ServisRacunara.DAL.Entiteti.Klijent
+
+<h2>Dodavanje klijenta</h2>
+
+<form method="post">
+
+    <div class="mb-3">
+        <label>Ime</label>
+        <input asp-for="Ime" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Prezime</label>
+        <input asp-for="Prezime" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Telefon</label>
+        <input asp-for="Telefon" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Email</label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Sačuvaj
+    </button>
+
+</form>

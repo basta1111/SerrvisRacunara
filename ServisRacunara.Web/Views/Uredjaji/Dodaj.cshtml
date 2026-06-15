@@ -1,0 +1,30 @@
+﻿@model ServisRacunara.DAL.Entiteti.Uredjaj
+
+<h2>Dodavanje uređaja</h2>
+
+<form method="post">
+
+    <div class="mb-3">
+        <label>Naziv</label>
+        <input asp-for="Naziv" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Model</label>
+        <input asp-for="Model" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Klijent</label>
+
+        <select asp-for="KlijentId"
+                asp-items="ViewBag.Klijenti"
+                class="form-control">
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Sačuvaj
+    </button>
+
+</form>
